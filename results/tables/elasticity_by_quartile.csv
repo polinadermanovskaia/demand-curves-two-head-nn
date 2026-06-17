@@ -1,0 +1,7 @@
+,elasticity,elasticity,elasticity,elasticity,review_count,review_count,review_count
+,count,mean,median,std,min,max,mean
+quartile_group,,,,,,,
+Q1 (0-6),186,-0.5748,-0.1945,1.0105,0,6,3.3548
+Q2 (7-12),187,-0.7297,-0.2524,1.1073,7,12,9.2353
+Q3 (13-24),188,-0.9532,-0.4865,1.2825,13,24,17.2021
+Q4 (25+),178,-1.71,-1.0597,1.8825,25,458,70.7022

@@ -1,0 +1,6 @@
+Model,Training_Time_s,Notes
+Per-product log-log,1.2050080299377441,1218 separate OLS
+Pooled log-log,0.006150245666503906,Single Ridge
+Pooled log-log + FE,0.014821290969848633,Demeaning + Ridge
+XGBoost,0.26642417907714844,74 rounds
+Two-Head NN,57.673207664489745,"Mean of 5 seeds, 81 epochs avg"

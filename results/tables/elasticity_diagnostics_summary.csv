@@ -1,0 +1,10 @@
+Problem,Indicator,Value,Interpretation
+Price Variation,Median price_span (usable train r_clipped),0.166,Limited variation
+Price Variation,% usable products span > 20%,40.5%,Minority have adequate variation
+Price Variation,Within/Total variance ratio (train avg_price),1.0%,Low within-product variation (weighted SS decomposition)
+Endogeneity,"Corr(demand_lag, r)",-0.0483,Negative
+Endogeneity,% positive elasticities,36.0%,High (wrong economic sign)
+IV Analysis,First-stage F,14.2,Strong
+IV Analysis,OLS elasticity,-0.460,
+IV Analysis,IV elasticity,-1.950,More negative suggests attenuation
+IV Analysis,Hausman test p-value,0.6913,No evidence

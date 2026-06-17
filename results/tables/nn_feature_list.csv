@@ -1,0 +1,28 @@
+feature_name,description,category,used_in,data_type,preprocessing
+year,Calendar year (2016-2018),Temporal,Context head,Numeric,Standardized
+month,Calendar month (1-12),Temporal,Context head,Numeric,Standardized
+weekofyear,ISO week of year (1-52),Temporal,Context head,Numeric,Standardized
+week_sin,Sine encoding of week: sin(2π × week/52),Temporal,Context head,Numeric,Standardized
+week_cos,Cosine encoding of week: cos(2π × week/52),Temporal,Context head,Numeric,Standardized
+demand_lag_1,Units sold in previous week,Demand lag,Context head,Numeric,Standardized; fillna(0)
+demand_lag_2,Units sold two weeks ago,Demand lag,Context head,Numeric,Standardized; fillna(0)
+demand_roll_4,Rolling 4-week average demand (shifted by 1),Demand lag,Context head,Numeric,Standardized; fillna(0)
+price_lag_1,Average price in previous week,Price lag,Context head,Numeric,Standardized; fillna(0)
+price_roll_4,Rolling 4-week average price (shifted by 1),Price lag,Context head,Numeric,Standardized; fillna(0)
+weeks_since_last_sale,Number of weeks since product was last sold,Gap,Context head,Numeric,Standardized; fillna(0)
+price_std,Within-week standard deviation of transaction prices,Price dispersion,Context head,Numeric,Standardized
+price_range,Within-week price range (max - min),Price dispersion,Context head,Numeric,Standardized
+category_embedding,Learned 16-dim embedding for product category,Embedding,Context head + Price head,Embedding (16 dim),nn.Embedding
+product_embedding,Learned 16-dim embedding for product ID,Embedding,Context head + Price head,Embedding (16 dim),nn.Embedding
+product_weight_g,Product weight in grams,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_length_cm,Product length in centimeters,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_height_cm,Product height in centimeters,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_width_cm,Product width in centimeters,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_photos_qty,Number of product photos,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_name_length,Number of characters in product name,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+product_description_length,Number of characters in product description,Product attribute,Price head (z),Numeric,Standardized; fillna(median)
+sku_review_count,Cumulative number of reviews as of observation week,Review,Price head (z),Numeric,Standardized; fillna(0)
+sku_review_mean,Cumulative average rating (1-5) as of observation week,Review,Price head (z),Numeric,Standardized; fillna(0)
+sku_share_low,Cumulative share of ratings ≤ 2 as of observation week,Review,Price head (z),Numeric,Standardized; fillna(0)
+r_clipped,Relative price P/P0 clipped to [0.785; 1.283],Price input,Price head,Numeric,Clipped to train quantiles [0.01; 0.99]
+y,Target: log(demand + 1),Target,Output,Numeric,Log1p transformation

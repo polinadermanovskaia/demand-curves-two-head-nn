@@ -1,0 +1,3 @@
+Model,Parameters,Mean test corr_mse,SD test corr_mse,Mean test R²,Mean paired delta (without - with),SD paired delta,Seeds without reviews better,Total seeds
+With reviews,82845,0.10069358,0.0016653083,-0.07636587619781494,-0.0020307943,0.0019585106,4,5
+Without reviews,82461,0.09866278,0.0016712986,-0.0511012077331543,-0.0020307943,0.0019585106,4,5

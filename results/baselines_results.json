@@ -1,0 +1,198 @@
+{
+  "models": [
+    {
+      "name": "per_product_loglog",
+      "description": "Per-product OLS: log(demand+1) ~ log(r)",
+      "n_products_fitted": 812,
+      "elasticities": {
+        "median": -0.2719741088734163,
+        "p10": -3.7645120117341806,
+        "p90": 2.4229666017659905,
+        "mean": -0.6740587937601016,
+        "share_negative": 0.5751231527093597
+      },
+      "mean_train_r2": 0.14665996370290593,
+      "metrics": {
+        "train": {
+          "corr_mse": 0.10215314827749557,
+          "mae": 0.25241728986444445,
+          "rmse": 0.3394211029457399,
+          "r2": 0.3864036372460039,
+          "n_obs": 11708,
+          "n_products": 1218
+        },
+        "val": {
+          "corr_mse": 0.1096706897468474,
+          "mae": 0.35095879524375373,
+          "rmse": 0.48139156663792954,
+          "r2": -0.06355476143375038,
+          "n_obs": 3392,
+          "n_products": 888
+        },
+        "test": {
+          "corr_mse": 0.10858150012192742,
+          "mae": 0.39404589579940014,
+          "rmse": 0.5787135311235118,
+          "r2": -0.9133733806316899,
+          "n_obs": 2870,
+          "n_products": 739
+        }
+      }
+    },
+    {
+      "name": "pooled_loglog",
+      "description": "Pooled Ridge: log(demand+1) ~ log(r) + features",
+      "config": {
+        "alpha": 0.01,
+        "n_features": 13,
+        "features": [
+          "log_r",
+          "category_encoded",
+          "month",
+          "weekofyear",
+          "week_sin",
+          "week_cos",
+          "product_weight_g",
+          "product_photos_qty",
+          "product_name_length",
+          "product_description_length",
+          "sku_review_count",
+          "sku_review_mean",
+          "sku_share_low"
+        ]
+      },
+      "key_coefficients": {
+        "log_r": -0.4946622351409846,
+        "intercept": 0.9813115570755763
+      },
+      "metrics": {
+        "train": {
+          "corr_mse": 0.12179244825913353,
+          "mae": 0.31319727665841424,
+          "rmse": 0.4012877383862241,
+          "r2": 0.14233660386963642,
+          "n_obs": 11708,
+          "n_products": 1218
+        },
+        "val": {
+          "corr_mse": 0.10320181302404674,
+          "mae": 0.33991518273091875,
+          "rmse": 0.43018213726379295,
+          "r2": 0.1506872444884142,
+          "n_obs": 3392,
+          "n_products": 888
+        },
+        "test": {
+          "corr_mse": 0.10253733592233118,
+          "mae": 0.37841336717454394,
+          "rmse": 0.5064025819232684,
+          "r2": -0.46508990680139184,
+          "n_obs": 2870,
+          "n_products": 739
+        }
+      }
+    },
+    {
+      "name": "pooled_loglog_FE",
+      "description": "Pooled Ridge with Fixed Effects (within-transformation)",
+      "config": {
+        "alpha": 1.0,
+        "n_features": 8,
+        "features": [
+          "log_r_demean",
+          "month_demean",
+          "weekofyear_demean",
+          "week_sin_demean",
+          "week_cos_demean",
+          "sku_review_count_demean",
+          "sku_review_mean_demean",
+          "sku_share_low_demean"
+        ]
+      },
+      "key_coefficients": {
+        "log_r_within": -0.49293723921496013
+      },
+      "metrics": {
+        "train": {
+          "corr_mse": 0.11435527598892763,
+          "mae": 0.25209593688865223,
+          "rmse": 0.3381645693873438,
+          "r2": 0.3909382833777222,
+          "n_obs": 11708,
+          "n_products": 1218
+        },
+        "val": {
+          "corr_mse": 0.10047769329047812,
+          "mae": 0.30423258099845796,
+          "rmse": 0.4135936266902388,
+          "r2": 0.2149260329459135,
+          "n_obs": 3392,
+          "n_products": 888
+        },
+        "test": {
+          "corr_mse": 0.09805584303671867,
+          "mae": 0.32715194771635986,
+          "rmse": 0.46126241267012114,
+          "r2": -0.21553812925306026,
+          "n_obs": 2870,
+          "n_products": 739
+        }
+      }
+    },
+    {
+      "name": "xgboost",
+      "description": "GBDT with full feature set",
+      "config": {
+        "objective": "reg:squarederror",
+        "eval_metric": "rmse",
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "min_child_weight": 3,
+        "seed": 42
+      },
+      "best_iteration": 40,
+      "best_val_rmse": 0.3541341136002806,
+      "n_features": 30,
+      "metrics": {
+        "train": {
+          "corr_mse": 0.07149293816386454,
+          "mae": 0.21934216369576584,
+          "rmse": 0.27891157754046697,
+          "r2": 0.5856778229626649,
+          "n_obs": 11708,
+          "n_products": 1218
+        },
+        "val": {
+          "corr_mse": 0.09862598963320121,
+          "mae": 0.28280189930010935,
+          "rmse": 0.36069220131010066,
+          "r2": 0.402914663833534,
+          "n_obs": 3392,
+          "n_products": 888
+        },
+        "test": {
+          "corr_mse": 0.0963631111130868,
+          "mae": 0.28338871210703964,
+          "rmse": 0.36485119289895007,
+          "r2": 0.23949163564927456,
+          "n_obs": 2870,
+          "n_products": 739
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "date": "2025-12-27T23:41:14.210800",
+    "data_file": "data/processed/panel.csv",
+    "n_total_obs": 17970,
+    "n_products": 1218,
+    "n_usable_for_elasticity": 812,
+    "splits": {
+      "train": 11708,
+      "val": 3392,
+      "test": 2870
+    }
+  }
+}

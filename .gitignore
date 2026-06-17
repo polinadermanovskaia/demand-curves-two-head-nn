@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+**/.DS_Store
+
+# Raw and processed data (not redistributed; see data/README.md)
+data/olist_datasets/
+data/processed/
+*.parquet
+
+# Tooling
+.claude/
+.codex/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
